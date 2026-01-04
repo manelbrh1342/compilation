@@ -60,3 +60,12 @@ Le programme affichera :
 3. L'AST textuel.
 4. Le résultat de l'exécution.
 5. Une image `ast_file.png` (si Graphviz est installé).
+## Analyse Alternative (Lark)
+
+Le projet inclut également une approche basée sur la bibliothèque **Lark** dans le répertoire `Analyse_Lark_ Automatique/`. Cette version utilise une grammaire formelle (`minipython.lark`) pour générer l'AST.
+
+Pour l'exécuter :
+```bash
+python "Analyse_Lark_ Automatique\analyse_minipython.py"
+```
+Cette version génère son propre AST visuel sous `ast_lark.png`.

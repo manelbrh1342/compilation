@@ -11,3 +11,5 @@ dist/
 *.egg-info/
 ast_file.dot
 ast_file.png
+ast_lark.dot
+ast_lark.png

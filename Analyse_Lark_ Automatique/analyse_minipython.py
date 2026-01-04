@@ -13,14 +13,10 @@ with open(grammar_path, "r", encoding="utf-8") as f:
 parser = Lark(grammar, start="start", parser="lalr", lexer="contextual")
 
 code_source = """
-int x;
-x=0;
-while (x <3){
-if (x ==1) {
-print (x);
-}
-x = x + 1;
-}
+int x, y;
+x = 10;
+y = x + 5;
+print(y);
 """
 
 # ------------------------------
@@ -167,7 +163,7 @@ except Exception as e:
 # 6. Exécution MiniPython
 # ------------------------------
 def execute(ast, symbol_table):
-    runtime = {var: None for var in symbol_table.keys()}
+    runtime = {var: 0 for var in symbol_table.keys()}
 
     for stmt in ast:
         if stmt[0] == 'assign(S)':
@@ -175,9 +171,9 @@ def execute(ast, symbol_table):
             val = stmt[2]
 
             if isinstance(val, tuple) and val[0] == '+(S)':
-                left = runtime[val[1]] if val[1] in runtime else int(val[1])
-                right = val[2]
-                runtime[var] = left + right
+                left_val = runtime[val[1]] if val[1] in runtime else int(val[1])
+                right_val = val[2]
+                runtime[var] = left_val + right_val
             else:
                 runtime[var] = val if isinstance(val, int) else runtime[val]
 
